@@ -13,7 +13,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    item = Item.create(name: params[:name], description: params[:description], image_url: params[:image_url])
+    item = Item.create(name: params[:item][:name], description: params[:item][:description], image_url: params[:item][:image_url])
     render json: item.to_json, status: 201
   end
 end
