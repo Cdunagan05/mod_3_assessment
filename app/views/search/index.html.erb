@@ -1,0 +1,6 @@
+<% @response_json["stores"].map do |i| %>
+  <h3><%= i["city"] %></h3></br>
+  <%= i["longName"] %></br>
+  <%= i["phone"] %></br>
+  <%= i["storeType"] %></br>
+<% end %>
