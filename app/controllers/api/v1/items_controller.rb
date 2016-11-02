@@ -12,6 +12,8 @@ class Api::V1::ItemsController < ApplicationController
     render json: Item.find(params[:id]).delete, status: 204
   end
 
-
-
+  def create
+    item = Item.create(name: params[:name], description: params[:description], image_url: params[:image_url])
+    render json: item.to_json, status: 201
+  end
 end

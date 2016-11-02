@@ -7,12 +7,19 @@ RSpec.describe "Items CRUD API" do
 
     expect(Item.count).to eq(2)
 
-    post "/api/v1/items.json"
+    params = { "name" => "Flubber",
+               "description" => "This is crazy",
+               "image_url" => "www.faker.fake.com",
+               "CONTENT_TYPE" => "application/json",
+               "ACCEPT" => "application/json" }
 
-    parsed_items = JSON.parse(response.body)
+    post "/api/v1/items.json", params: params
 
     expect(response.status).to eq(201)
-    expect(parsed_items.count).to eq(3)
-    expect(parsed_items.last["name"]).to eq("Flubber")
+    expect(Item.count).to eq(3)
+    binding.pry
+    expect(Item.last["name"]).to eq("Flubber")
+    expect(Item.last["description"]).to eq("This is crazy")
+    expect(Item.last["image_url"]).to eq("www.faker.fake.com")
   end
 end
