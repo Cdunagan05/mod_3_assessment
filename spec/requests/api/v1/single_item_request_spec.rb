@@ -9,8 +9,7 @@ RSpec.describe "Items CRUD API" do
 
     parsed_items = JSON.parse(response.body)
 
-    binding.pry
     expect(response.status).to eq(200)
-    expect(parsed_items.first["name"]).to eq("Firetruck")
+    expect(parsed_items["name"]).to eq("Firetruck")
   end
 end
